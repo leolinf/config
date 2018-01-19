@@ -1,0 +1,10 @@
+requests==2.10.0
+pycrypto==2.6.1
+pydes==2.0.1
+python-Levenshtein==0.12.0
+Flask-RESTful==0.3.5
+gevent==1.1.2
+raven==5.32.0
+flask-cache==0.13.1
+Crypto
+suds-jurko

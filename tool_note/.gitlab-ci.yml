@@ -1,0 +1,21 @@
+stages:
+    - test
+    - deploy
+
+test:
+    image: python:2.7
+    stage: test
+    script:
+        - mkdir logs
+        - pip install -r requirements.txt -i http://pypi.doubanio.com/simple --trusted-host pypi.doubanio.com
+        - python -m unittest discover -s test
+    except:
+        - master
+
+deploy:
+    image: hub.cdecube.com/ansible-deploy:latest
+    stage: deploy
+    script:
+        - ansible-playbook conf/ansible/deploy-test.yml -f 10 -i conf/ansible/hosts
+    only:
+        - develop
