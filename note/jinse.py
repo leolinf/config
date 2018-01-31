@@ -49,7 +49,7 @@ logger.info('info')
 logger.debug("debug")
 
 
-url = 'http://www.jinse.com/ajax/currencies?currency=CNY&limit=100'
+url = 'http://xxx.com'
 host = '127.0.0.1'
 port = '3306'
 user = 'root'
@@ -124,5 +124,5 @@ CREATE TABLE `jinse_sort` (
     `updated_at` VARCHAR(255) NOT NULL COMMENT '刷新页面时间',
     `insert_time` DATETIME NOT NULL COMMENT '更新插入时间',
     PRIMARY KEY (`Name`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='测试用的 表';
 """
