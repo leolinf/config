@@ -41,6 +41,6 @@ expire= str(time.time())
 
 key = hmac.new(a + b, '|'.join([user_id, reg_time, account_id]), hashlib.sha1).hexdigest()[:32]
 enc_msg = AESCipher(key).encrypet('|'.join([user_id, account_id, expire]))
-print enc_msg
+print(enc_msg)
 dec_msg = AESCipher(key).decrypt(enc_msg)
-print dec_msg
+print(dec_msg)

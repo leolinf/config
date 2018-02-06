@@ -171,7 +171,7 @@ def do(subdir):
         dispatch.update({
             '/{0}'.format(subdir): module.app.app
         })
-    except:
+    except Exception:
         traceback.print_exc()
 
 
