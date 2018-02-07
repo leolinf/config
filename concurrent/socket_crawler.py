@@ -1,11 +1,12 @@
 # -*- coding: utf-8 -*-
+
 import socket
 
 
 def bloking_now():
     sock = socket.socket()
     sock.connect(("baidu.com", 80))
-    request = "GET / HTTP/1.0\r\nHost: baidu.com\r\n\r\n"
+    request = "GET / HTTP/1.1\r\n\r\n"
     sock.send(request.encode("ascii"))
     response = b''
     chunk = sock.recv(4096)

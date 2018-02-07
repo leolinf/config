@@ -3,6 +3,7 @@ syntax on
 filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
+
 Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
 Plugin 'gmarik/Vundle.vim'
 Plugin 'bling/vim-airline'
