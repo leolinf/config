@@ -14,7 +14,7 @@ from flask import Flask
 from flask_restful import Resource, Api
 from sqlalchemy import create_engine
 from sqlalchemy.orm import scoped_session
-from sqlalchemy.orm.session import sessionmaker
+from sqlalchemy.orm import sessionmaker
 from contextlib import contextmanager
 
 
@@ -39,11 +39,6 @@ def session_scope(session=None):
         session.remove()
 
 
-app = Flask(__name__)
-api = Api(app)
-engine = create_engine('mysql+mysqlconnector://root:123456@127.0.0.1:3306/weibit_spider', pool_size=2, max_overflow=2, pool_timeout=30)
-Session.configure(bind=engine)
-
 class MarkValueSort(Resource):
 
     def get(self):
@@ -52,12 +47,23 @@ class MarkValueSort(Resource):
         logger.info('session id = %s', str(id(session)))
         sql = 'SELECT id, name FROM jinse_sort where id=250'
         result = session.execute(sql).fetchall()
-        session.commit()
+        session.close()
         _list = [dict(i) for i in result]
         logger.info('result : %s', _list)
         return _list
 
-api.add_resource(MarkValueSort, '/')
+
+def create_app():
+    app = Flask(__name__)
+    api = Api(app)
+    engine = create_engine('mysql+mysqlconnector://root:123456@127.0.0.1:3306/weibit_spider', pool_size=2, max_overflow=0, pool_recycle=50)
+    Session.configure(bind=engine)
+    api.add_resource(MarkValueSort, '/')
+    return app
+
+
+app = create_app()
+
 
 if __name__ == '__main__':
     app.run(debug=True)
