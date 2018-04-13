@@ -1,4 +1,0 @@
-# -*- coding: utf-8 -*-
-BROKER_URL = 'redis://192.168.0.7:6379/11'
-CELERY_RESULT_BACKEND = 'redis://192.168.0.7:6379/10'
-CELERY_TASK_SERIALIZER = 'json'
