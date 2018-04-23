@@ -9,10 +9,18 @@ from thrift import Thrift
 from thrift.transport import TSocket
 from thrift.transport import TTransport
 from thrift.protocol import TBinaryProtocol
+from client import ThriftClient
+
+TEST_SERVER = {"addr": ("0.0.0.0", 9090), "timeout": 2000}
 
 
-def client_call(msg):
+def client_call(*args, **kwargs):
     try:
+        client = ThriftClient(TEST_SERVER, HelloService, framed=False)
+        client.raise_except=True
+        ret = client.call('say', *args, **kwargs)
+        return ret
+        '''
         transport = TSocket.TSocket('localhost', 9090)
         transport = TTransport.TBufferedTransport(transport)
         protocol = TBinaryProtocol.TBinaryProtocol(transport)
@@ -23,6 +31,7 @@ def client_call(msg):
         print("server - " + msg)
         transport.close()
         return msg
+        '''
 
     except Thrift.TException as ex:
         print("%s" % (ex.message))

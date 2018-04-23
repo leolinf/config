@@ -1,16 +1,15 @@
 # -*- coding:utf-8 -*-
 
-from flask import Flask, request
+from flask import Flask, request, Response, redirect
 from simple_client import client_call
 
 
 app = Flask(__name__)
 
 
-@app.route('/', methods=['GET'])
+@app.route('/test', methods=['GET'])
 def upload_file():
-    data = request.args
-    return client_call(data['test'])
+    return client_call('test')
 
 
 if __name__ == '__main__':
