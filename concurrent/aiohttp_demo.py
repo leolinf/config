@@ -9,6 +9,7 @@ async def fetch(session, url):
             await response.text()
             return
 
+
 async def main():
     async with aiohttp.ClientSession() as session:
         await fetch(session, 'http://www.baidu.com')

@@ -15,7 +15,7 @@ import time
 import hashlib
 import urllib
 
-uri = 'http://10.0.2.36:8887'
+uri = 'http://www.test.com'
 
 
 def gen_sign(secret, data):

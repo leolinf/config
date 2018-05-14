@@ -71,6 +71,7 @@ def thread_way():
     res = [fut.result() for fut in futs]
     return len(res)
 
+
 if __name__ == "__main__":
     star_time = time.time()
     sync_way()
