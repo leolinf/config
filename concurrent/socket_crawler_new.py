@@ -5,8 +5,6 @@ import socket
 from selectors import DefaultSelector, EVENT_WRITE, EVENT_READ
 
 
-print(EVENT_READ, EVENT_WRITE)
-
 selector = DefaultSelector()
 stopped = False
 url_todo = ['/', '/1', '/2']
