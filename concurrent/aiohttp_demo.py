@@ -1,5 +1,6 @@
 import aiohttp
 import asyncio
+import threading
 import async_timeout
 
 
@@ -10,7 +11,6 @@ async def fetch(session, url):
     with async_timeout.timeout(10):
         async with session.get(url) as response:
             a = await response.read()
-            print(a[:10])
             try:
                 return await response.text()
             except:
@@ -23,5 +23,6 @@ async def main():
 
 
 if __name__ == '__main__':
-    tasks = [main() for i in range(100)]
+    tasks = [main() for i in range(10)]
     loop.run_until_complete(asyncio.gather(*tasks))
+    print(loop)
