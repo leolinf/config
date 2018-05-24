@@ -17,8 +17,7 @@ monkey.patch_all()
 
 def run():
     print(threading.currentThread())
-    gevent.sleep(1)
-    print("grevent start")
+    gevent.sleep(0)
 
 def run_test():
     print(threading.currentThread())
@@ -35,9 +34,7 @@ def test2():
 
 
 def print_friend_username(item, http):
-    friend_url = URL('https://www.baidu.com')
-    # the greenlet will block until a connection is available
-    response = http.get(friend_url.request_uri)
+    response = http.get('')
     print(response.status_code)
     print(threading.currentThread())
 
@@ -55,14 +52,14 @@ def main1():
 
 def main():
 
-    grl = Greenlet(run)
-    grl.start()
-    grl.join()
+    #grl = Greenlet(run)
+    #grl.start()
+    #grl.join()
 
     #start = gevent.spawn(run)
     #start.join()
 
-    #gevent.joinall([gevent.spawn(run), gevent.spawn(run_test)])
+    gevent.joinall([gevent.spawn(run), gevent.spawn(run_test)])
 
 
 if __name__ == '__main__':
