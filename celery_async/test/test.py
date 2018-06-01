@@ -1,16 +1,13 @@
 # -*- coding: utf-8 -*-
 
-from bin.tasks import app, test
+from bin.tasks import app
 
 # 加入对应的权重值
 def execute_add():
-    priority = [9, 6, 0, 4, 2, 6, 4, 8, 4, 0]
-    for i in range(10):
-        print("%s + 10 = %s, and priority is %s" % (i, i+10, priority[i]))
-        import time
-        time.sleep(5)
-        test.add.apply_async(args=(i, 10), priority=priority[i])
-        test.add.delay(i, 10)
+    print(app)
+    print(dir(app))
+    app.send_task('rd.group.test.add', args=(1, 10))
+    app.send_task('rd.group.test.get_args', args=(1,2,3,4,5,6,7,8,9))
 
 
 if __name__ == "__main__":

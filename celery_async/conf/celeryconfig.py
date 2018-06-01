@@ -26,29 +26,32 @@ CELERY_SEND_TASK_SENT_EVENT = True
 # 将任务队列与相应的exchange和相应的routing_key绑定
 CELERY_QUEUES = (
     Queue('rd.group.test', exchange=Exchange('rd.group.ex.test', type='direct'), routing_key='test'),
+    Queue('rd.group.args', exchange=Exchange('rd.group.ex.args', type='direct'), routing_key='args'),
 )
 
 # 任务路由规则
 CELERY_ROUTES = ([
     ('rd.group.test.add', {'exchange': 'rd.group.ex.test', 'routing_key': 'test'}),
+    ('rd.group.test.get_args', {'exchange': 'rd.group.ex.args', 'routing_key': 'args'}),
 ],)
 
 
 # celery 周期任务
 
 # 指定时区, 默认UTC时间
-CELERY_TIMEZONE = 'Asia/Beijing'
+CELERY_TIMEZONE = 'Asia/Chongqing'
 
  # 目前允许配置两种形式, 否则监控无法识别:
  # 1.每天固定时间点: crontab(hour=12, minute=0)
  # 2.间隔时间点: crontab(hour='*/2', minute=0) 0点开始，每2h执行一次
 
 # 周期任务
-#CELERYBEAT_SCHEDULE = {
-#    'test-schedule-add': {
-#        'task': 'rd.group.qudao.test.add',
-#        'schedule': crontab(hour='*/1', minute=9),
-#        'args': (1, 1),
-#        'options': {'queue': 'rd.group.qudao.test', 'routing_key': 'test'}  # 需显式指定
-#    },
-#}
+CELERYBEAT_SCHEDULE = {
+    'test-schedule-add': {
+        'task': 'rd.group.test.add',
+        #'schedule': crontab(hour='*/1', minute=9),
+        'schedule': crontab(),
+        'args': (1, 1),
+        'options': {'queue': 'rd.group.test', 'routing_key': 'test'}  # 需显式指定
+    },
+}
