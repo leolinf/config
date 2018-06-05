@@ -1,13 +1,12 @@
 # -*- coding: utf-8 -*-
-# coding: utf-8
-"""
-thrift_client.py
-"""
+
 import socket
 import sys
 import logging
 from hello import HelloService
 from hello.ttypes import *
+from gevent import monkey
+monkey.patch_all()
 
 from thrift.transport import TSocket
 from thrift.transport import TTransport
@@ -31,12 +30,12 @@ class HelloServiceHandler:
 
 handler = HelloServiceHandler()
 processor = HelloService.Processor(handler)
-transport = TSocket.TServerSocket("0.0.0.0", 9090)
-tfactory = TTransport.TBufferedTransportFactory()
-pfactory = TBinaryProtocol.TBinaryProtocolFactory()
-
-server = TServer.TSimpleServer(processor, transport, tfactory, pfactory)
-log.info("Starting thrift server in python...")
-log.info("Starting http://0.0.0.0:9090")
-server.serve()
-log.info("done!")
+#transport = TSocket.TServerSocket("0.0.0.0", 9090)
+#tfactory = TTransport.TBufferedTransportFactory()
+#pfactory = TBinaryProtocol.TBinaryProtocolFactory()
+#
+#server = TServer.TSimpleServer(processor, transport, tfactory, pfactory)
+#log.info("Starting thrift server in python...")
+#log.info("Starting http://0.0.0.0:9090")
+#server.serve()
+#log.info("done!")
