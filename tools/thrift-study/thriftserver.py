@@ -203,7 +203,6 @@ def start_gstream(module, handler_class, addr, max_conn=1000, framed=False, max_
             i.join()
 
 
-#def start_gevent(module, handler_class, addr, proc_process, max_conn=1000, max_process=1):
 def start_gevent(module, handler_class, my_process, addr, max_conn=1000, max_process=1):
     from gevent.pool import Pool
     from gevent.server import StreamServer

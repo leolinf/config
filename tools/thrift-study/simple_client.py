@@ -36,3 +36,8 @@ def client_call(*args, **kwargs):
     except Thrift.TException as ex:
         print("%s" % (ex.message))
         raise Exception(ex.message)
+
+
+if __name__ == "__main__":
+    req = client_call('123')
+    print(req)
