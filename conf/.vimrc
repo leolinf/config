@@ -9,11 +9,7 @@
 "       -> Theme Settings  主题设置
 
 "       -> 插件配置和具体设置在vimrc.bundles中
-"==========================================
 
-"==========================================
-" Initial Plugin 加载插件
-"==========================================
 
 " 修改leader键
 let mapleader = ','
@@ -43,7 +39,7 @@ set lazyredraw
 " 检测文件类型
 filetype on
 " 针对不同的文件类型采用不同的缩进格式
-filetype indent on
+" filetype indent on
 " 允许插件
 filetype plugin on
 " 启动自动补全
@@ -158,8 +154,6 @@ set tabstop=4
 set shiftwidth=4
 " 按退格键时可以一次删掉 4 个空格
 set softtabstop=4
-" insert tabs on the start of a line according to shiftwidth, not tabstop 按退格键时可以一次删掉 4 个空格
-set smarttab
 " 缩进时，取整 use multiple of shiftwidth when indenting with '<' and '>'
 set shiftround
 
@@ -192,7 +186,6 @@ set nrformats=
 set encoding=utf-8
 " 自动判断编码时，依次尝试以下编码：
 set fileencodings=utf-8,ucs-bom,cp936,gb18030,big5,euc-jp,euc-kr,latin1
-set helplang=cn
 " 下面这句只影响普通模式 (非图形界面) 下的 Vim
 set termencoding=utf-8
 
@@ -214,11 +207,6 @@ autocmd! bufwritepost .vimrc source %
 " 自动补全配置
 " 让Vim的补全菜单行为与一般IDE一致(参考VimTip1228)
 set completeopt=longest,menu
-
-" 增强模式中的命令行自动完成操作
-set wildmenu
-" Ignore compiled files
-set wildignore=*.o,*~,*.pyc,*.class
 
 " 离开插入模式后自动关闭预览窗口
 autocmd InsertLeave * if pumvisible() == 0|pclose|endif
@@ -272,13 +260,6 @@ noremap L $
 
 " Map ; to : and save a million keystrokes 用于快速进入命令行
 nnoremap ; :
-
-
-" 命令行模式增强，ctrl - a到行首， -e 到行尾
-cnoremap <C-j> <t_kd>
-cnoremap <C-k> <t_ku>
-cnoremap <C-a> <Home>
-cnoremap <C-e> <End>
 
 " 去掉搜索高亮
 noremap <silent><leader>/ :nohls<CR>

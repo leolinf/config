@@ -1,20 +1,36 @@
 # -*- coding: utf-8 -*-
 import os
 import xlwt
+import mimetypes
+from io import BytesIO
+
 from flask import Flask, request, redirect, url_for, send_from_directory, Response
 from werkzeug import secure_filename
 
 from flask import make_response, send_file
-import mimetypes
-from io import BytesIO
+from raven.contrib.flask import Sentry
+from raven.handlers.logging import SentryHandler
+from raven import Client
+import logging
+
+
+
+client = Client('https://3ac8f7df9e8b45149dbc68e7e6603bc9:731474d612b9473d844c3728e61ccbdb@sentry.io/1220553', capture_local=True)
+handler = SentryHandler(client)
+handler.setLevel(logging.WARN)
+log = logging.getLogger(__name__)
+log.addHandler(handler)
+
 
 path = os.getcwd()
-
 UPLOAD_FOLDER = '%s/uploads'%(path)
 ALLOWED_EXTENSIONS = set(['txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'])
 
 app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+
+
+sentry = Sentry(app, dsn='https://3ac8f7df9e8b45149dbc68e7e6603bc9:731474d612b9473d844c3728e61ccbdb@sentry.io/1220553')
 
 def allowed_file(filename):
     return '.' in filename and \
@@ -46,7 +62,6 @@ def download():
     filename = '/test.xlsx'
     with open(UPLOAD_FOLDER + filename, 'rb') as f:
         content = f.read()
-    print(content)
     a = BytesIO(content)
     _file = Response(a)
     mime_type = mimetypes.guess_type(filename)[0]
@@ -81,7 +96,6 @@ def web():
     worksheet = wb.add_worksheet()
     worksheet.write('A1', 'Hello world')
     wb.close()
-    print(out.getvalue())
 #    _file = send_file(BytesIO(out.getvalue()), mimetype='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet', as_attachment=True,
 #            attachment_filename="测试.xlsx".encode().decode('latin-1'))
 #    return _file
