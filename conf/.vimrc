@@ -150,6 +150,9 @@ set autoindent
 " tab相关变更
 " 设置Tab键的宽度        [等同的空格个数]
 set tabstop=4
+" tab 如果是默认的时候，显示如下
+set list
+set listchars=tab:▸\
 " 每一次缩进对应的空格数
 set shiftwidth=4
 " 按退格键时可以一次删掉 4 个空格
