@@ -3,7 +3,7 @@
                     目录挂载（起到数据备份作用）                                           指定配置文件
 sudo docker run -v /mnt/redis/data:/data -d -p 6379:6379 --restart always --name myredis redis redis-server /mnt/redis/data/redis6379.conf
 
-<https://github.com/faalin/Article/blob/master/redis6379.conf>
+<https://github.com/leolinf/config/blob/master/conf/redis6379.conf>
 
 # rabbitmq docker 镜像配置问题
 
