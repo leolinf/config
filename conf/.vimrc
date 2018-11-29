@@ -277,6 +277,21 @@ autocmd BufNewFile,BufRead *.py inoremap # X<c-h>#
 " Toggles between the active and last active tab "
 " The first tab is always 1 "
 let g:last_active_tab = 1
+" normal模式下切换到确切的tab
+" tab切换
+map <leader>j :tabnext<cr>
+map <leader>k :tabprev<cr>
+
+noremap <leader>1 1gt
+noremap <leader>2 2gt
+noremap <leader>3 3gt
+noremap <leader>4 4gt
+noremap <leader>5 5gt
+noremap <leader>6 6gt
+noremap <leader>7 7gt
+noremap <leader>8 8gt
+noremap <leader>9 9gt
+noremap <leader>0 :tablast<cr>
 " nnoremap <leader>gt :execute 'tabnext ' . g:last_active_tab<cr>
 " nnoremap <silent> <c-o> :execute 'tabnext ' . g:last_active_tab<cr>
 " vnoremap <silent> <c-o> :execute 'tabnext ' . g:last_active_tab<cr>

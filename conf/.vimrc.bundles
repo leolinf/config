@@ -128,8 +128,8 @@ if has_key(g:plugs, 'syntastic')
 
     " checkers
     " python
-    let g:syntastic_python_checkers=['flake8', 'pep8'] " 使用pyflakes,速度比pylint快
-    let g:syntastic_python_flake8_args='--ignore=E501,E225,E124,E712,E116,E131'
+    let g:syntastic_python_checkers=['flake8',] " 使用pyflakes,速度比pylint快
+    let g:syntastic_python_flake8_options='--ignore=E501,E225,E124,E712,E116,E131'
 
 
     " to see error location list
@@ -186,11 +186,11 @@ if has_key(g:plugs, 'ale')
     " npm install -g eslint eslint-plugin-standard eslint-plugin-promise eslint-config-standard
     " npm install -g eslint-plugin-import eslint-plugin-node eslint-plugin-html babel-eslint
     let g:ale_linters = {
-    \   'python': ['flake8', 'pep8'],
+    \   'python': ['flake8'],
     \}
 
     " E501 -> 120 chars
-    let g:ale_python_flake8_args="--ignore=E114,E116,E131 --max-line-length=120"
+	let g:ale_python_flake8_args="--ignore=E114,E116,E131 --max-line-length=120"
 
     let g:ale_sign_error = '>>'
     let g:ale_sign_warning = '>'
@@ -245,6 +245,8 @@ endif
 
     " nnoremap <leader>jd :YcmCompleter GoToDefinition<CR>
     " 配置自动跳转
+    let g:ycm_goto_buffer_command = 'new-or-existing-tab'
+    let g:ycm_register_as_syntastic_checker = 0
     let g:ycm_python_binary_path = '/Users/fanlin/.pyenv/shims/python'
     nnoremap <leader>fd :YcmCompleter GoToDefinitionElseDeclaration<CR>
     nnoremap <leader>gd :YcmCompleter GoToDeclaration<CR>
