@@ -1,14 +1,12 @@
 # -*- coding: utf-8 -*-
 
 import logging
-import coloredlogs
 logger = logging.getLogger()
 handler = logging.StreamHandler()
 formatter = logging.Formatter('%(asctime)s %(process)d,%(threadName)s %(filename)s:%(lineno)d [%(levelname)s] %(message)s')
 handler.setFormatter(formatter)
 logger.addHandler(handler)
 logger.setLevel(logging.DEBUG)
-coloredlogs.install(level='DEBUG')
 
 from flask import Flask
 from flask_restful import Resource, Api

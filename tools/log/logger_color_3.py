@@ -18,7 +18,7 @@ class ScreenHandler(logging.StreamHandler):
             msg = self.format(record)
             stream = self.stream
             # 设置颜色
-            fs = LEVEL_COLOR[record.levelno] + "%s\n" + '\33[0m'
+            fs = LEVEL_COLOR[record.levelno] + "%s" + '\33[0m'
             stream.write(fs % msg)
             stream.write(self.terminator)
             self.flush()

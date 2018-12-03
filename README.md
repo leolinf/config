@@ -1,2 +1,3 @@
-# config
-config and tool
+# 记录一些工具和常用配置
+
+## 欢迎 star
