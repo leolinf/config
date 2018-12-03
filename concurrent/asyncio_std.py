@@ -32,3 +32,16 @@ loop.run_until_complete(hello())
 tasks = [task(), task()]
 loop.run_until_complete(asyncio.wait(tasks))
 loop.close()
+
+
+ async def getValue(i):
+    return i
+
+
+ def runEpool():
+    # 一个loop只能在一个进程里面有效
+    loop = asyncio.new_event_loop()
+    asyncio.set_event_loop(loop)
+    tasks = [getValue(i) for i in range(10)]
+    loop.run_until_complete(asyncio.wait(tasks))
+    loop.close()
