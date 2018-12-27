@@ -9,8 +9,6 @@ import time
 import socket
 import signal
 import gevent
-import thrift
-import thrift.protocol
 
 from thrift.Thrift import TException, TMessageType
 from thrift.protocol import TBinaryProtocol

@@ -1,5 +1,8 @@
 # -*- encoding: utf-8 -*-
 
+from gevent import monkey
+monkey.patch_all()
+
 import threading
 from gevent import Greenlet
 from gevent import sleep
@@ -10,9 +13,6 @@ from geventhttpclient import HTTPClient
 from geventhttpclient.url import URL
 import gevent.pool
 
-
-from gevent import monkey
-monkey.patch_all()
 
 
 def run():
