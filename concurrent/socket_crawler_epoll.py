@@ -7,7 +7,7 @@ from selectors import DefaultSelector, EVENT_WRITE, EVENT_READ
 
 selector = DefaultSelector()
 stopped = False
-url_todo = ['/', '/1', '/2']
+url_todo = ['/', '/1', '/2', '/3', '/4', '/5', '/6', '/7', '/8', '/9']
 
 
 class Crawler:
@@ -21,15 +21,15 @@ class Crawler:
         self.sock = socket.socket()
         self.sock.setblocking(False)
         try:
-            self.sock.connect(('baidu.com', 80))
+            self.sock.connect(('example.com', 80))
         except BlockingIOError:
             pass
         selector.register(self.sock.fileno(), EVENT_WRITE, self.connected)
 
     def connected(self, key, mask):
         selector.unregister(key.fd)
-        get = 'GET / HTTP/1.0\r\nHost: baidu.com\r\n\r\n'
-        self.sock.send(get.encode('ascii'))
+        get = 'GET / HTTP/1.0\r\nHost: example.com\r\n\r\n'
+        self.sock.send(get.encode())
         selector.register(key.fd, EVENT_READ, self.read_response)
 
     def read_response(self, key, mask):
@@ -49,7 +49,6 @@ def loop():
     while not stopped:
         events = selector.select()
         for event_key, event_mask in events:
-            print(event_key, event_mask)
             callback = event_key.data
             callback(event_key, event_mask)
 
