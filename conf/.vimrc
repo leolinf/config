@@ -39,7 +39,7 @@ set lazyredraw
 " 检测文件类型
 filetype on
 " 针对不同的文件类型采用不同的缩进格式
-" filetype indent on
+filetype indent on
 " 允许插件
 filetype plugin on
 " 启动自动补全
@@ -92,7 +92,7 @@ set showmode
 " 在上下移动光标时，光标的上方或下方至少会保留显示的行数
 set scrolloff=7
 
-set winwidth=79
+" set winwidth=79
 
 " 命令行（在状态行下）的高度，默认为1，这里是2
 " set statusline=%<%f\ %h%m%r%=%k[%{(&fenc==\"\")?&enc:&fenc}%{(&bomb?\",BOM\":\"\")}]\ %-14.(%l,%c%V%)\ %P
