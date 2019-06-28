@@ -93,6 +93,7 @@ set showmode
 set scrolloff=7
 
 " set winwidth=79
+set tw=120
 
 " 命令行（在状态行下）的高度，默认为1，这里是2
 " set statusline=%<%f\ %h%m%r%=%k[%{(&fenc==\"\")?&enc:&fenc}%{(&bomb?\",BOM\":\"\")}]\ %-14.(%l,%c%V%)\ %P
@@ -149,7 +150,10 @@ set autoindent
 
 " tab相关变更
 " 设置Tab键的宽度        [等同的空格个数]
+"
 set tabstop=4
+
+set expandtab
 " tab 如果是默认的时候，显示如下
 set list
 set listchars=tab:▸\
@@ -157,6 +161,7 @@ set listchars=tab:▸\
 set shiftwidth=4
 " 按退格键时可以一次删掉 4 个空格
 set softtabstop=4
+
 " 缩进时，取整 use multiple of shiftwidth when indenting with '<' and '>'
 set shiftround
 
@@ -349,6 +354,10 @@ nnoremap <leader>sv :source $MYVIMRC<CR>
 
 " 具体编辑文件类型的一般设置，比如不要 tab 等
 autocmd FileType python set tabstop=4 shiftwidth=4 expandtab ai
+autocmd FileType ruby,javascript,html,css,xml set tabstop=4 shiftwidth=4 softtabstop=4 expandtab ai
+autocmd BufRead,BufNewFile *.md,*.mkd,*.markdown set filetype=markdown.mkd tabstop=4
+autocmd BufRead,BufNewFile *.part set filetype=html
+autocmd BufRead,BufNewFile *.vue setlocal filetype=vue.html.javascrip tabstop=4 shiftwidth=4 softtabstop=4 expandtab ai
 
 " 保存python文件时删除多余空格
 fun! <SID>StripTrailingWhitespaces()
