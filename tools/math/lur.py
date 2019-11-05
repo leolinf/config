@@ -4,6 +4,7 @@ from collections import OrderedDict
 
 
 class LurCache(object):
+    """lur缓存算法"""
 
     def __init__(self, capacity):
         self.capacity = capacity
