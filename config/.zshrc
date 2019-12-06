@@ -98,9 +98,18 @@ source $ZSH/oh-my-zsh.sh
 #
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
+# # alias ohmyzsh="mate ~/.oh-my-zsh"
+alias rm='rmtrash'
 #
-# python
+# java
+JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_231.jdk/Contents/Home
+PATH=$JAVA_HOME/bin:$PATH:.
+CLASSPATH=$JAVA_HOME/lib/tools.jar:$JAVA_HOME/lib/dt.jar:.
+export JAVA_HOME
+export PATH
+export CLASSPATH
+
+# pyenv python
 export PATH="$HOME/.pyenv/bin:$PATH:$GOROOT/bin"
 eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
@@ -109,9 +118,21 @@ eval "$(pyenv virtualenv-init -)"
 export QFPAY_DB_CONF_PATH=/Users/fanlin/Project/qfpay/db.conf
 export QFPAY_SERVER_CONF_PATH=/Users/fanlin/Project/qfpay/server.yaml
 export PYTHONPATH=$PYTHONPATH:/Users/fanlin/Project/qfpay/qfpay_pylib
+
 # golang
 export GOPATH=/Users/fanlin/Golang
 export PATH=$PATH:$GOPATH/bin
-export GOPROXY=https://goproxy.cn
-
+export GO111MODULE=on
+# j 跳转
 [[ -s $(brew --prefix)/etc/profile.d/autojump.sh ]] && . $(brew --prefix)/etc/profile.d/autojump.sh
+
+# adb 相关
+export ANDROID_HOME=/Users/fanlin/Library/Android/SDK
+export PATH=${PATH}:${ANDROID_HOME}/tools
+export PATH=${PATH}:${ANDROID_HOME}/platform-tools
+
+# zs 一些常用的环境变量
+export ZS_NAMESPACE=demo
+export ZS_PROJECT=project
+export ZS_TASK=task
+export ZS_ENV=env
