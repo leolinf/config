@@ -11,4 +11,4 @@ mysql-connector==2.1.6
 pytz==2018.3
 six==1.11.0
 SQLAlchemy==1.2.5
-Werkzeug==0.14.1
+Werkzeug==0.15.3
