@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Definition for singly-linked list.
+#  单链表排序，要求时间复杂度O(nlogn), 空间复杂度O(1)
 class ListNode:
     def __init__(self, x):
         self.val = x
@@ -51,9 +51,10 @@ a.next = ListNode(1)
 a.next.next = ListNode(2)
 a.next.next.next = ListNode(3)
 
-
+'''
 test = Solution()
 b = test.sortList(a)
 while b:
     print(b.val)
     b = b.next
+'''

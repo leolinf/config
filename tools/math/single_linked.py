@@ -43,5 +43,18 @@ def reverseList(head):
     return newHead
 
 
-a = reverseList(node1)
-print(a.val)
+def reverseList2(head):
+    curr = head
+    node = None
+    while curr:
+        tmpHead = curr.next
+        curr.next = node
+        node = curr
+        curr = tmpHead
+    return node
+
+
+a = reverseList2(node1)
+while a:
+    print(a.val)
+    a = a.next

@@ -3,13 +3,13 @@ import time
 
 
 def dichotomy(_list, n):
+    """二分查找 该数字在列表中的位置"""
     low = 0
     high = len(_list) - 1
 
     while low <= high:
-        mid = (low + high) / 2
+        mid = (low + high) // 2
         guess = _list[mid]
-        time.sleep(1)
         if guess > n:
             high = mid - 1
             continue
@@ -24,6 +24,5 @@ def dichotomy(_list, n):
 
 
 array = [1, 2, 3, 4, 5, 6]
-array = []
-result = dichotomy(array, 1)
+result = dichotomy(array, 5)
 print("result: %s" % result)
