@@ -24,5 +24,5 @@ def dichotomy(_list, n):
 
 
 array = [1, 2, 3, 4, 5, 6]
-result = dichotomy(array, 5)
+result = dichotomy(array, 3.4)
 print("result: %s" % result)

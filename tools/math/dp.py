@@ -147,6 +147,7 @@ def func(amount, coins):
     最小次硬币的选择
     params: amount 硬币金额
             coins 硬币种类
+            递归解法
     """
     if amount == 0:
         return 0
@@ -163,9 +164,20 @@ def func(amount, coins):
     return result
 
 
-a = func(13, [1, 2, 5, 7])
+a = func(12, [1, 3, 5])
 print(a)
 
-def Beibao():
-    pass
 
+def test(amount, coins):
+    dp = [amount+1 for i in range(amount+1)]
+    dp[0] = 0
+    for i in range(amount+1):
+        for j in range(len(coins)):
+            if i >= coins[j]:
+                dp[i] = min(dp[i-coins[j]], dp[i]) + 1
+    if dp[amount] == amount + 1:
+        return -1
+    return dp[amount]
+
+
+print(test(824, [1, 4, 16, 64]))

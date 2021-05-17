@@ -5,21 +5,21 @@ import mimetypes
 from io import BytesIO
 
 from flask import Flask, request, redirect, url_for, send_from_directory, Response
-from werkzeug import secure_filename
+from werkzeug.utils import secure_filename
 
 from flask import make_response, send_file
-from raven.contrib.flask import Sentry
-from raven.handlers.logging import SentryHandler
-from raven import Client
+# from raven.contrib.flask import Sentry
+# from raven.handlers.logging import SentryHandler
+# from raven import Client
 import logging
 
 
 
-client = Client('https://3ac8f7df9e8b45149dbc68e7e6603bc9:731474d612b9473d844c3728e61ccbdb@sentry.io/1220553', capture_local=True)
-handler = SentryHandler(client)
-handler.setLevel(logging.WARN)
-log = logging.getLogger(__name__)
-log.addHandler(handler)
+# client = Client('https://3ac8f7df9e8b45149dbc68e7e6603bc9:731474d612b9473d844c3728e61ccbdb@sentry.io/1220553', capture_local=True)
+# handler = SentryHandler(client)
+# handler.setLevel(logging.WARN)
+# log = logging.getLogger(__name__)
+# log.addHandler(handler)
 
 
 path = os.getcwd()
@@ -30,7 +30,7 @@ app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 
-sentry = Sentry(app, dsn='https://3ac8f7df9e8b45149dbc68e7e6603bc9:731474d612b9473d844c3728e61ccbdb@sentry.io/1220553')
+# sentry = Sentry(app, dsn='https://3ac8f7df9e8b45149dbc68e7e6603bc9:731474d612b9473d844c3728e61ccbdb@sentry.io/1220553')
 
 def allowed_file(filename):
     return '.' in filename and \
@@ -78,13 +78,14 @@ def test():
     ws.write(0, 0, 'Hello world')
     wb.save(out)
     content = out.getvalue()
-    _file = send_file(BytesIO(content), mimetype='application/vnd.ms-excel', as_attachment=True,
-            attachment_filename="测试.xls".encode().decode('latin-1'))
-    return _file
 
     _file = Response(BytesIO(content))
     _file.headers['Content-Type'] = 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
     _file.headers['Content-Disposition'] = 'attachment; filename={}'.format("测试.xlsx".encode().decode('latin-1'))
+    return _file
+
+    _file = send_file(BytesIO(content), mimetype='application/vnd.ms-excel', as_attachment=True,
+            attachment_filename="测试.xlsx".encode().decode('latin-1'))
     return _file
 
 
@@ -96,9 +97,9 @@ def web():
     worksheet = wb.add_worksheet()
     worksheet.write('A1', 'Hello world')
     wb.close()
-#    _file = send_file(BytesIO(out.getvalue()), mimetype='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet', as_attachment=True,
-#            attachment_filename="测试.xlsx".encode().decode('latin-1'))
-#    return _file
+    _file = send_file(BytesIO(out.getvalue()), mimetype='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet', as_attachment=True,
+            attachment_filename="测试.xlsx".encode().decode('latin-1'))
+    return _file
     _file = Response(BytesIO(out.getvalue()))
     _file.headers['Content-Type'] = 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
     _file.headers['Content-Disposition'] = 'attachment; filename={}'.format("测试.xlsx".encode().decode('latin-1'))

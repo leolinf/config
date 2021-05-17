@@ -12,7 +12,7 @@ logging_config = dict(
     },
     handlers={
         'h': {
-            'class': 'logging.ScreenHandler',
+            'class': 'logging.StreamHandler',
             'formatter': 'f',
             'level': logging.DEBUG
         }
