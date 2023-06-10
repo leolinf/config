@@ -49,29 +49,27 @@ class MainHandler(tornado.web.RequestHandler):
             "cmd": 1001,
             "data": {
                 "account": {
-                    "id": "123123123",
-                    "username": "lin36072314",
-                    "password": "Fan15181199257.",
+                    "id": "123123123123123",
+                    "username": "Swans92064993",
+                    "password": "ABCqwe.123",
+                    "phoneNo": "447867903305",
                 },
                 "proxyLine": {
-                    "ip": "127.0.0.1",
-                    "port": 1087,
-                    "username": "152.32.205.219-2000 ",
-                    "password": "d1iUQB59DiWER13Gwt82"
+                    "ip": "47.242.225.168",
+                    "port": 40001,
                 },
                 "task": {
-                    "id": '123132132313',
-                    "itemId": "1234567890",
-                    "taskType": "LIKE",
+                    "id": '123132132313123123',
+                    "itemId": "1234567890234234",
+                    "taskType": "FOLLOW",
                     "platform": "TWITTER",
                     "param": {
-                        "link": "https://twitter.com/motokorich/status/1304994515430723584",
-                        "content": "",
+                        "link": "https://twitter.com/POTUS",
+                        "content": "very good",
                         }
                     }
                 }
             }
-        b = {"cmd":1001,"mac":"F0-18-98-18-D5-21","data":{"account":{"id":"1363671481116000256","username":"855381352654","password":"!qaz@wsx","areaCode":"855","phoneNo":"381352654","platform":"FACEBOOK"},"proxyLine":{"ip":"127.0.0.1","port":1086},"proxyIp":{"ip":"193.26.32.2","port":1111},"task":{"id":"1363738922475061248","itemId":"1363738922697359360","taskType":"LIKE","platform":"FACEBOOK","param":{"link":"https://www.facebook.com/387703671687392/posts/1144405326017219","content":None}}}}
         WSHandler.new_send(json.dumps(a))
 
 
